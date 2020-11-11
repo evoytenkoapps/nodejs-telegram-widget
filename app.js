@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const server = require("http").createServer(app);
+const port = 8883;
+const host = "localhost";
 
 // body parser
 app.use(
@@ -10,14 +12,14 @@ app.use(
   })
 );
 
+app.post("/auth", (req, res) => {
+  console.log(req.body);
+  res.json({ success: true });
+});
+
 // Запуск сервера
-server.listen(environment.port, environment.host, function() {
-  console.log(
-    "Node server started on %s://%s:%d",
-    environment.http_type,
-    environment.host,
-    environment.port
-  );
+server.listen(port, host, function() {
+  console.log("Node server started on %s://%s:%d", port, host);
 });
 
 module.exports.server = server;

@@ -9,7 +9,7 @@ describe("app.js", function() {
       .post("/auth")
       .send(testData)
       .expect(res => {
-        assert.deepStrictEqual(res.body.sucess, true);
+        assert.deepStrictEqual(res.body.success, true);
       });
   });
 });
