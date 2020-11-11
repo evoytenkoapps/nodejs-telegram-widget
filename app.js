@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const server = require("http").createServer(app);
 const port = 8883;
 const host = "localhost";
-const token = JSON.parse(
+const { token } = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, "./settings.json"), "utf8")
 );
 
@@ -24,7 +24,7 @@ app.post("/auth", (req, res) => {
 
 // Запуск сервера
 server.listen(port, host, function() {
-  console.log("Node server started on %s://%s:%d", port, host);
+  console.log("Node server started on %s:%d", host, port);
 });
 
 module.exports.server = server;
